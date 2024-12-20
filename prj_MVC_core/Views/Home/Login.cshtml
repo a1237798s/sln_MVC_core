@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>登入系統</h1>
+
+@using (Html.BeginForm())
+{
+    <div>
+        帳號(註冊時EMAIL)<br />
+        <input type="text" name="txtAccount" />
+    </div>
+    <div>
+        密碼<br />
+        <input type="text" name="txtPassword" />
+    </div>
+    <input type="submit" value="登入" />
+    <script>
+        $(function () { })
+    </script>
+}

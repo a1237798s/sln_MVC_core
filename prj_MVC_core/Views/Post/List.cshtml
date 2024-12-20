@@ -1,0 +1,65 @@
+﻿@model IEnumerable<prj_MVC_core.Models.CPhotoWrap>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>評論區</h1>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                序
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FDate)
+            </th>
+            <th>
+
+                @Html.DisplayNameFor(model => model.FDescription)
+            </th>
+            <th>
+                影像
+            </th>
+            <th>
+                發帖人
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @count
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FDate)
+                    </td>
+                    <td>
+
+                        @Html.DisplayFor(modelItem => item.FDescription)
+                    </td>
+                    <td>
+                        <img src="~/imgs/@item.FImage" height="80" width="90" />                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.postUser.FName)
+                    </td>
+                    <td>
+                        @Html.ActionLink("回復", "Reply", new { id = item.Fid })                        
+                    </td>
+                </tr>
+            }
+        }
+       
+    </tbody>
+</table>
+

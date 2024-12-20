@@ -1,0 +1,63 @@
+﻿@model List<prj_MVC_core.Models.CCustomerWrap>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>會員清單</h1>
+@using (Html.BeginForm())
+{
+    @:關鍵字 @Html.TextBox("txtKeyword")
+    <input type="submit" value="查詢" class="btn btn-primary">
+}
+<p>
+    <a asp-action="Create">新增會員</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model[0].Fid)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].FName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].FPhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].FEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model[0].FAddress)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FPhone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FAddress)
+            </td>
+           
+            <td>
+                    @Html.ActionLink("編輯", "Edit", new { id = item.Fid }) |
+                    @Html.ActionLink("刪除", "Delete", "Customer", new { id = item.Fid }, new { onclick = "return confirm('確定要刪除嗎?')" })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

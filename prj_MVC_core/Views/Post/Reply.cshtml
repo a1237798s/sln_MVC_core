@@ -1,0 +1,62 @@
+﻿@model IEnumerable<prj_MVC_core.Models.Tcomment>
+
+@{
+    ViewData["Title"] = "Reply";
+}
+
+<h1>回覆留言</h1>
+<div align="center">
+    <img src="~/imgs/@ViewBag.PHOTO" width="400" height="380" />
+    <br />
+    <h2>@ViewBag.DESC</h2>
+</div>
+<p>
+    <a asp-action="AddComment">新增留言</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               序
+            </th>
+            <th>
+               發文日期
+            </th>           
+            <th>
+                留言
+            </th>
+            <th>回帖人</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+            @foreach (var item in Model)
+            {
+                count++;
+                <tr>
+                    <td>
+                        @count
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FComment)
+                       
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FUserId)
+                    </td>
+                  
+                    <td>
+                        @Html.ActionLink("讚", "Edit", new { /* id=item.PrimaryKey */ }) |                       
+                        @Html.ActionLink("看", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

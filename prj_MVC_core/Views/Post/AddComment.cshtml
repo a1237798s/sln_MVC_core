@@ -1,0 +1,37 @@
+﻿@model prj_MVC_core.Models.Tcomment
+
+@{
+    ViewData["Title"] = "AddComment";
+    Layout = null;
+}
+
+<h1>填寫評論</h1>
+
+<h4>回覆意見</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddComment">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+   
+            <div class="form-group">
+                <label asp-for="FComment" class="control-label"></label>
+                <input asp-for="FComment" class="form-control" />
+                <span asp-validation-for="FComment" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="送出評論" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">取消</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
