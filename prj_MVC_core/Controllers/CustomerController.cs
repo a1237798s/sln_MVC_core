@@ -8,6 +8,18 @@ namespace prj_MVC_core.Controllers
     public class CustomerController : Controller
     {
 
+        public IActionResult test03()
+        {
+
+            TCustomer x = new TCustomer();
+            x.FName = "Test03";
+            x.FPhone = "Test03";
+            CMyClass CC = new CMyClass(x);
+            CC.customer1 = x;
+            CC.insert3();
+            return View();
+        }
+
         public IActionResult test() 
         {
             
